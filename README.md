@@ -23,6 +23,17 @@ poetry run uvicorn app.main:app --reload
 
 poetry run python -m pytest tests/test_main.py -q -p no:cacheprovider
 
+## Frontend
+
+Start the backend on port 8000, then run from `frontend`:
+
+```sh
+npm install
+npm run dev
+```
+
+Open the URL printed by Vite (normally `http://localhost:5173`). Enter a name to call `GET /v1/begroetingen/{naam}`. The development server proxies `/v1` to the backend. For a production build, run `npm run build` and serve `frontend/dist` from the same origin as the API, or proxy `/v1` to the backend.
+
 
 ## GibHub Actions
 
