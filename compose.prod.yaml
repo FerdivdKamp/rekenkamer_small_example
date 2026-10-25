@@ -1,0 +1,13 @@
+services:
+  backend:
+    build: ./backend
+    image: ghcr.io/ferdivdkamp/rekenkamer_small_example-backend:${IMAGE_TAG:-latest}
+
+  frontend:
+    build: ./frontend
+    image: ghcr.io/ferdivdkamp/rekenkamer_small_example-frontend:${IMAGE_TAG:-latest}
+    ports:
+      - "8080:80"
+    depends_on:
+      backend:
+        condition: service_healthy
