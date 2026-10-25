@@ -20,6 +20,12 @@ api = FastAPI(
         "url": "https://github.com/FerdivdKamp/rekenkamer_small_example/issues",
         "email": "ferdivdkamp@gmail.com",
     },
+    servers=[
+        {
+            "url": "http://localhost:8000",
+            "description": "Lokale ontwikkelomgeving",
+        }
+    ]
 )
 
 

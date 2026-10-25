@@ -53,7 +53,7 @@ jobs:
       - name: Generate OpenAPI specification
         run: |
           poetry run python -c \
-            "import json; from app.main import app; print(json.dumps(app.openapi()))" \
+            "import json; from app.main import api; print(json.dumps(api.openapi()))" \
             > openapi.json
 
       - name: Validate API Design Rules
