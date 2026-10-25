@@ -25,3 +25,40 @@ jobs:
         run: poetry run ruff check --output-format=github app tests
       - name: Run pytest
         run: poetry run python -m pytest tests -q -p no:cacheprovider
+
+
+  adr:
+    name: Validate OpenAPI against ADR
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install Poetry
+        run: python -m pip install poetry==2.5.1
+
+      - name: Install backend dependencies
+        run: poetry install --no-root --no-interaction
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: Generate OpenAPI specification
+        run: |
+          poetry run python -c \
+            "import json; from app.main import app; print(json.dumps(app.openapi()))" \
+            > openapi.json
+
+      - name: Validate API Design Rules
+        run: |
+          npx --yes @developer-overheid-nl/don-checker@latest \
+            validate \
+            --standard adr \
+            --input openapi.json
