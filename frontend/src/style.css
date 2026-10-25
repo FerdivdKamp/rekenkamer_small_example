@@ -1,0 +1,38 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #17212b;
+  background: #f5f7fa;
+}
+
+body {
+  min-width: 280px;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+.kaart {
+  box-sizing: border-box;
+  width: min(100% - 2rem, 28rem);
+  padding: 2rem;
+  border: 1px solid #e0e5eb;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 8px 30px #17212b0d;
+}
+
+h1 { margin: 0 0 0.5rem; }
+p { line-height: 1.5; }
+label { display: block; margin: 1.5rem 0 0.5rem; font-weight: 600; }
+.invoerregel { display: flex; gap: 0.5rem; }
+input, button { font: inherit; border-radius: 6px; }
+input { min-width: 0; flex: 1; padding: 0.65rem; border: 1px solid #9aa9b8; }
+button { padding: 0.65rem 1rem; border: 0; color: white; background: #155e96; cursor: pointer; }
+button:hover { background: #0e4977; }
+button:disabled { opacity: 0.65; cursor: wait; }
+.resultaat { min-height: 1.5em; margin-bottom: 0; }
+
+@media (max-width: 380px) {
+  .invoerregel { flex-direction: column; }
+}
