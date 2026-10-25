@@ -11,3 +11,20 @@ automated testing using github actions
 starting for this we'll use docker compose 
 
 
+
+
+## Backend
+Updated the hello world example with hello name matching the ADR design rules.
+
+poetry run uvicorn app.main:app --reload
+
+
+### Pytest
+
+poetry run python -m pytest tests/test_main.py -q -p no:cacheprovider
+
+
+## GibHub Actions
+
+Linter
+OpenAPI stadnard validation
